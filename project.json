@@ -36,7 +36,9 @@
       "privateWorkflows": []
     },
     "processOptions": {
-      "ignoredFiles": []
+      "ignoredFiles": [
+        "ArraysDemo.xaml"
+      ]
     },
     "fileInfoCollection": [],
     "modernBehavior": false
