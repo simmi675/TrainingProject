@@ -25,6 +25,7 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -109,7 +110,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID1">
+        <FlowStep x:Name="__ReferenceID2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">200,223.6</av:Point>
@@ -128,7 +129,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </ui:InputDialog>
           <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID2">
+            <FlowStep x:Name="__ReferenceID3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">200,295.6</av:Point>
@@ -191,7 +192,7 @@
                         <Catch x:TypeArguments="s:InvalidOperationException" sap:VirtualizedContainerService.HintSize="403.2,323.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
@@ -242,7 +243,7 @@
                 </If>
               </Sequence>
               <FlowStep.Next>
-                <FlowDecision x:Name="__ReferenceID3" DisplayName="Flow Decision 1" sap:VirtualizedContainerService.HintSize="88,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                <FlowDecision x:Name="__ReferenceID4" DisplayName="Flow Decision 1" sap:VirtualizedContainerService.HintSize="88,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                   <FlowDecision.Condition>
                     <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="valid" />
                   </FlowDecision.Condition>
@@ -257,7 +258,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <FlowDecision.True>
-                    <FlowDecision x:Name="__ReferenceID0" DisplayName="Flow Decision 2" sap:VirtualizedContainerService.HintSize="88,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                    <FlowDecision x:Name="__ReferenceID1" DisplayName="Flow Decision 2" sap:VirtualizedContainerService.HintSize="88,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                       <FlowDecision.Condition>
                         <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="counter &lt; numberOfNames" />
                       </FlowDecision.Condition>
@@ -267,17 +268,17 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           <av:Point x:Key="ShapeLocation">136,506.4</av:Point>
                           <av:Size x:Key="ShapeSize">88,87.2</av:Size>
-                          <av:PointCollection x:Key="TrueConnector">136,550 100,550 100,663.6</av:PointCollection>
+                          <av:PointCollection x:Key="TrueConnector">136,550 120,550 120,653.6</av:PointCollection>
                           <av:PointCollection x:Key="FalseConnector">224,550 254,550 254,560 390,560</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <FlowDecision.True>
-                        <FlowStep x:Name="__ReferenceID5">
+                        <FlowStep x:Name="__ReferenceID0">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">0,663.6</av:Point>
+                              <av:Point x:Key="ShapeLocation">20,653.6</av:Point>
                               <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">200,690 230,690 230,626.4 350,626.4 350,656.4</av:PointCollection>
+                              <av:PointCollection x:Key="ConnectorLocation">220,680 250,680 250,626.4 350,626.4 350,656.4</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="[&quot;Please enter name #&quot; + (Counter + 1).ToString]" Title="enter Name">
@@ -294,7 +295,7 @@
                           <FlowStep.Next>
                             <FlowDecision x:Name="__ReferenceID6" DisplayName="Flow Decision 3" sap:VirtualizedContainerService.HintSize="88,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                               <FlowDecision.Condition>
-                                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="name is Nothing or name.trim.Length &lt; 3" />
+                                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="name is Nothing orElse name.trim.Length &lt; 3" />
                               </FlowDecision.Condition>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -302,7 +303,7 @@
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   <av:Point x:Key="ShapeLocation">306,656.4</av:Point>
                                   <av:Size x:Key="ShapeSize">88,87.2</av:Size>
-                                  <av:PointCollection x:Key="TrueConnector">306,700 276,700 276,800 200,800</av:PointCollection>
+                                  <av:PointCollection x:Key="TrueConnector">306,700 276,700 276,790 230,790</av:PointCollection>
                                   <av:PointCollection x:Key="FalseConnector">394,700 470,700</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
@@ -310,11 +311,12 @@
                                 <FlowStep x:Name="__ReferenceID7">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <av:Point x:Key="ShapeLocation">0,773.6</av:Point>
+                                      <av:Point x:Key="ShapeLocation">30,763.6</av:Point>
                                       <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                                      <av:PointCollection x:Key="ConnectorLocation">30,790 3.5527136788005E-15,790 3.5527136788005E-15,680 20,680</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Either name is not entered or name entered is less tha 3 characters&quot;]">
+                                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Either name is not entered or name entered is less than 3 characters&quot;]">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -322,6 +324,9 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </ui:MessageBox>
+                                  <FlowStep.Next>
+                                    <x:Reference>__ReferenceID0</x:Reference>
+                                  </FlowStep.Next>
                                 </FlowStep>
                               </FlowDecision.True>
                               <FlowDecision.False>
@@ -432,7 +437,7 @@
                                             </sap:WorkflowViewStateService.ViewState>
                                           </Assign>
                                           <FlowStep.Next>
-                                            <x:Reference>__ReferenceID0</x:Reference>
+                                            <x:Reference>__ReferenceID1</x:Reference>
                                           </FlowStep.Next>
                                         </FlowStep>
                                       </FlowStep.Next>
@@ -465,7 +470,7 @@
                     </FlowDecision>
                   </FlowDecision.True>
                   <FlowDecision.False>
-                    <FlowStep x:Name="__ReferenceID4">
+                    <FlowStep x:Name="__ReferenceID5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">450,403.6</av:Point>
@@ -482,7 +487,7 @@
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:MessageBox>
                       <FlowStep.Next>
-                        <x:Reference>__ReferenceID1</x:Reference>
+                        <x:Reference>__ReferenceID2</x:Reference>
                       </FlowStep.Next>
                     </FlowStep>
                   </FlowDecision.False>
@@ -493,12 +498,12 @@
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
-    <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID6</x:Reference>
     <x:Reference>__ReferenceID7</x:Reference>
     <x:Reference>__ReferenceID8</x:Reference>
