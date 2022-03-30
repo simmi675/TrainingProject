@@ -1,0 +1,4 @@
+Id is Peter
+Name is Peter
+Selected City is Bangalore Temperature is 
+32
