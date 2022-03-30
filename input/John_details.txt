@@ -1,0 +1,4 @@
+ Id is ID 1003
+Name is John
+Selected City is Goa
+ Temperature is 32
