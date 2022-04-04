@@ -73,7 +73,7 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open 'legacyinvoicingapp.exe ...'" FileName="C:\Program Files (x86)\Contoso, Inc\Contoso Invoicing\LegacyInvoicingApp.exe" sap:VirtualizedContainerService.HintSize="508.8,232" sap2010:WorkflowViewState.IdRef="OpenApplication_1" InformativeScreenshot="c10098f60e1a1ad532975d029d4a9845" Selector="&lt;wnd app='legacyinvoicingapp.exe' cls='HwndWrapper*' title='Contoso Invoicing' /&gt;">
+      <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open 'legacyinvoicingapp.exe ...'" FileName="C:\Program Files (x86)\Contoso, Inc\Contoso Invoicing\legacyinvoicingapp.exe" sap:VirtualizedContainerService.HintSize="508.8,232" sap2010:WorkflowViewState.IdRef="OpenApplication_1" InformativeScreenshot="123eb1f97784366cdc8d36e4e346d0a7" Selector="&lt;wnd app='legacyinvoicingapp.exe' cls='HwndWrapper*' title='Contoso Invoicing' /&gt;">
         <ui:OpenApplication.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
