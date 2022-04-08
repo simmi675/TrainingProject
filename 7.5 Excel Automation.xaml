@@ -218,7 +218,7 @@
             </ui:ForEachRow>
             <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{intSum1,intSum2,intSum3}]" DataTable="[dt_sumTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
             <ui:ExcelWriteCell Cell="A3" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Total Check" Text="July Total Check" />
-            <ui:ExcelAppendRange DataTable="[dt_sumTable]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelAppendRange_1" SheetName="Total Check" />
+            <ui:ExcelAppendRange DataTable="[dt_sumTable]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelAppendRange_1" SheetName="Total Check for both months" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
