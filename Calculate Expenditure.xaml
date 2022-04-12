@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Calculate_Expenditure" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1410.4,1168.8" sap2010:WorkflowViewState.IdRef="Calculate_Expenditure_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Calculate_Expenditure" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1076,1249.6" sap2010:WorkflowViewState.IdRef="Calculate_Expenditure_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/credentials" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="32">
+    <scg:List x:TypeArguments="x:String" Capacity="38">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -33,10 +33,16 @@
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
       <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>CredentialManagement</x:String>
+      <x:String>UiPath.Credentials.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="19">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -56,22 +62,29 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>CredentialManagement</AssemblyReference>
+      <AssemblyReference>UiPath.Credentials.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Calculate_Expenditure" sap:VirtualizedContainerService.HintSize="527.2,4420" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Calculate_Expenditure" sap:VirtualizedContainerService.HintSize="375.2,1184.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="originalFilePath" />
       <Variable x:TypeArguments="x:String" Name="FileName" />
       <Variable x:TypeArguments="x:String" Name="newFileLocation" />
       <Variable x:TypeArguments="ui:GenericValue" Name="convValue" />
       <Variable x:TypeArguments="ui:GenericValue" Name="TotalVariance" />
+      <Variable x:TypeArguments="ss:SecureString" Name="Password" />
+      <Variable x:TypeArguments="x:String" Name="Username" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="485.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[originalFilePath]</OutArgument>
       </Assign.To>
@@ -79,7 +92,7 @@
         <InArgument x:TypeArguments="x:String">input/SampleExcelFiles/Demo.xlsx</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="485.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
       </Assign.To>
@@ -87,8 +100,8 @@
         <InArgument x:TypeArguments="x:String">[originalFilePath.Split("/"c).Last]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="485.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Original File name is &quot; + FileName]" />
-    <Assign sap:VirtualizedContainerService.HintSize="485.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Original File name is &quot; + FileName]" />
+    <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[newFileLocation]</OutArgument>
       </Assign.To>
@@ -96,21 +109,27 @@
         <InArgument x:TypeArguments="x:String">["output/" + FileName.Split("."c).First +Now.ToString("ddMM_HHmm") + "." + FileName.Split("."c).Last]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="485.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[newFileLocation]" />
-    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[newFileLocation]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="485.6,160" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="[originalFilePath]">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[newFileLocation]" />
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[newFileLocation]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="[originalFilePath]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CopyFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="485.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Xe Conversion.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Xe Conversion.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="ui:GenericValue" x:Key="SGDtoEURO">[convValue]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="485.6,3368.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[newFileLocation]">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[newFileLocation]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -406,11 +425,21 @@
       </ui:ExcelApplicationScope.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="485.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Total Variance is &quot; + TotalVariance]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Total Variance is &quot; + TotalVariance]" />
+    <p:GetSecureCredential CredentialType="Generic" DisplayName="Get Secure Credentials" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="GetSecureCredential_1" Password="[Password]" PersistanceType="Enterprise" Target="GmailCred" Username="[Username]" />
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" Body="PFA" DisplayName="Send SMTP Mail Message" Email="[Username]" EnableSSL="True" From="[Username]" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Name="Admin Training" Port="587" SecureConnection="Auto" SecurePassword="[Password]" Server="smtp.gmail.com" Subject="Expenditure Report" To="sim.simmianand@gmail.com">
+      <ui:SendMail.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+          <InArgument x:TypeArguments="x:String">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="newFileLocation" />
+          </InArgument>
+        </scg:List>
+      </ui:SendMail.Files>
+    </ui:SendMail>
   </Sequence>
 </Activity>
