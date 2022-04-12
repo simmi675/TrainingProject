@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Calculate_Expenditure" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1410.4,3381.6" sap2010:WorkflowViewState.IdRef="Calculate_Expenditure_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Calculate_Expenditure" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1410.4,1168.8" sap2010:WorkflowViewState.IdRef="Calculate_Expenditure_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="60">
+    <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -36,7 +36,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="19">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -58,12 +58,13 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Calculate_Expenditure" sap:VirtualizedContainerService.HintSize="527.2,3316.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Calculate_Expenditure" sap:VirtualizedContainerService.HintSize="527.2,4420" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="originalFilePath" />
       <Variable x:TypeArguments="x:String" Name="FileName" />
       <Variable x:TypeArguments="x:String" Name="newFileLocation" />
       <Variable x:TypeArguments="ui:GenericValue" Name="convValue" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="TotalVariance" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -106,18 +107,16 @@
     </ui:CopyFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="485.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Xe Conversion.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="SGDtoEURO">
-          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="convValue" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="SGDtoEURO">[convValue]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="485.6,2365.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[newFileLocation]">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="485.6,3368.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[newFileLocation]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="452,2256" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="452,3259.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_Actuals" />
               <Variable x:TypeArguments="s:String[]" Name="actualColumns" />
@@ -130,6 +129,18 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'Title Bar'" sap:VirtualizedContainerService.HintSize="410.4,154.4" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="f10" KeyModifiers="Ctrl" SpecialKey="True">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="60566de5-dab5-4972-860e-05e156c38fd6" InformativeScreenshot="29954311c5574addb44f8ae738bfee22" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='Demo????_????.xlsx - Excel' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
             <ui:ExcelReadRange AddHeaders="False" DataTable="[dt_Actuals]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="410.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="C3:N5" SheetName="Actual Exp" />
             <Assign sap:VirtualizedContainerService.HintSize="410.4,60" sap2010:WorkflowViewState.IdRef="Assign_4">
               <Assign.To>
@@ -263,7 +274,7 @@
                 <InArgument x:TypeArguments="x:Int32">11</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="410.4,1570.4" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+            <ui:InterruptibleWhile Condition="[varMonth &gt;= 0]" DisplayName="While" sap:VirtualizedContainerService.HintSize="410.4,1570.4" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
               <ui:InterruptibleWhile.Body>
                 <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,1403.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
@@ -350,7 +361,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ExcelWriteCell>
-                  <ui:ExcelWriteCell sap2010:Annotation.AnnotationText="&#xD;&#xA;&quot;=SUM(&quot; +varianceColumns(varMonth) +&quot;5:&quot; + varianceColumns(varMonth) +&quot;7)&quot;" Cell="[varianceColumns(varMonth) + &quot;8&quot;]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,148" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="Budg Exp" Text="[&quot;=SUM(&quot; +varianceColumns(varMonth) +&quot;5:&quot; + varianceColumns(varMonth) +&quot;7)&quot;]">
+                  <ui:ExcelWriteCell sap2010:Annotation.AnnotationText="&#xA;&quot;=SUM(&quot; +varianceColumns(varMonth) +&quot;5:&quot; + varianceColumns(varMonth) +&quot;7)&quot;" Cell="[varianceColumns(varMonth) + &quot;8&quot;]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,148" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="Budg Exp" Text="[&quot;=SUM(&quot; +varianceColumns(varMonth) +&quot;5:&quot; + varianceColumns(varMonth) +&quot;7)&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -367,13 +378,39 @@
                   </Assign>
                 </Sequence>
               </ui:InterruptibleWhile.Body>
-              <ui:InterruptibleWhile.Condition>
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="varMonth &gt;= 0" />
-              </ui:InterruptibleWhile.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:InterruptibleWhile>
+            <ui:ExcelSelectRange DisplayName="Select Range" sap:VirtualizedContainerService.HintSize="410.4,60" sap2010:WorkflowViewState.IdRef="ExcelSelectRange_3" Range="AM1" SheetName="Budg Exp" />
+            <ui:ExcelWriteCell Cell="AM5" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_9" SheetName="Budg Exp" Text="=Sum(E5,H5,K5,N5,Q5,T5,W5,Z5,AC5,AF5,AI5,AL5)" />
+            <ui:ExcelWriteCell Cell="AM6" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="Budg Exp" Text="=Sum(E6,H6,K6,N6,Q6,T6,W6,Z6,AC6,AF6,AI6,AL6)" />
+            <ui:ExcelWriteCell Cell="AM7" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="Budg Exp" Text="=Sum(E7,H7,K7,N7,Q7,T7,W7,Z7,AC7,AF7,AI7,AL7" />
+            <ui:ExcelSetRangeColor Color="[Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="410.4,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_1" Range="AM8" SheetName="Budg Exp" />
+            <ui:ExcelReadCell Cell="AM8" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="410.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Budg Exp">
+              <ui:ExcelReadCell.Result>
+                <OutArgument x:TypeArguments="ui:GenericValue">[TotalVariance]</OutArgument>
+              </ui:ExcelReadCell.Result>
+            </ui:ExcelReadCell>
+            <ui:FormatValue DisplayName="Format Value" sap:VirtualizedContainerService.HintSize="410.4,60" sap2010:WorkflowViewState.IdRef="FormatValue_4" Value="[TotalVariance]">
+              <ui:FormatValue.Format>
+                <ui:GeneralNumberFormatProvider DecimalDigits="2" DecimalSeparator="." GroupSeparator="," />
+              </ui:FormatValue.Format>
+            </ui:FormatValue>
+            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="410.4,22.4" sap2010:WorkflowViewState.IdRef="Delay_2" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="485.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Total Variance is &quot; + TotalVariance]" />
   </Sequence>
 </Activity>
