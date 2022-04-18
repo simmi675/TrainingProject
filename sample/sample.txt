@@ -1,0 +1,43 @@
+"Hello " + username --> concatination
+String.Concat("Hello ", username)
+				arg1,    arg2
+ 
+
+"Today is Weekday".Contains("Weekday") -->true
+"Today is Weekday".Contains("Weekend")  --> false
+
+"You have selected " + selectedDay
+
+String.Format("{0} is the day you have selected and {0} is the third Day of the Week and tomorrow is {1}", "Wednesday", "Thursday","Friday")
+
+"Today is Wednesday" --> var1 
+  0123456
+		    
+Q -> Out of the given string, we want to know the day
+
+var1.indexOf("is") -->6
+var1.subString(indexNo., how many characters)
+var1.subString(var1.indexOf("is") + 3) --> "Wednesday"
+
+
+names = {"James", "John", "Peter", "Hary"}
+String.Join("-", names) --> "James-John-Peter-Hary"
+
+var1.Replace("Today", "Tomorrow") --> "Tomorrow is Wednesday"
+
+var1.Replace("Today", "Tomorrow").Replace("Wednesday", "Thursday") -->
+
+"Tomorrow is Thursday"
+
+fullname = "John Dave Smith"
+
+fullname.Split(" "c)  --> array --> {"John", "Dave", "Smith"}
+fullname.Split(" "c)(0) or fullname.Split(" "c).First --> "John"
+fullname.Split(" "c)(2) or fullname.Split(" "c).Last  or  fullname.Split(" "c)(fullname.Split(" "c).Length -1) --> "Smith" 
+fullname.Split(" "c)(1)      --> "Dave"
+
+
+
+
+
+

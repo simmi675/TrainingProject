@@ -1,0 +1,9 @@
+Task -- Do it with Web Recording
+-------------------------------------------
+1. Open the Registration Page
+2. Fill the form fields with data using Web Recording
+3. For controls like dropdown menu or combobox---The activity is "Select item"
+
+Inside the Element > Control > Select Item
+
+4. Once all the data is filled, you have to add one activity to select cars ---> Select Multiple Items
